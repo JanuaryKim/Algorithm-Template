@@ -3,7 +3,7 @@ package baekjoon.sort_정렬;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/** 퀵정렬, 정렬은 되는것 같지만 백준 2750, 2751, 10989 모두 실패.. **/
+/** 미완성, 퀵정렬, 정렬은 되는것 같지만 백준 2750, 2751, 10989 모두 실패.. **/
 public class B10989 {
 
 

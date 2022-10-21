@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /** 템플릿화 (삽입정렬) **/
 
-/** sort : Insertion Sort **/
+/** 성공 : Insertion Sort **/
 public class B2750 {
     public static void main(String[] args) {
 

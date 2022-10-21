@@ -2,6 +2,7 @@ package code.sort_정렬;
 
 import static code.sort_정렬.C35_Solution.*;
 
+/** 실패, 미완성 **/
 public class C35_quickSort {
     public static void main(String[] args) {
         int[] output = quickSort(new int[]{3, 1, 21});

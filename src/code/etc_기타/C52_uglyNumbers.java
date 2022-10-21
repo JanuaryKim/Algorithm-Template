@@ -2,7 +2,7 @@ package code.etc_기타;
 
 import static code.etc_기타.C52_Solution.uglyNumbers;
 
-/** 성공 하지만 비효율적, 소인수분해 문제 **/
+/** 성공, 하지만 비효율적, 소인수분해 문제 **/
 public class C52_uglyNumbers {
     public static void main(String[] args) {
         int result = uglyNumbers(1);

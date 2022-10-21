@@ -1,6 +1,6 @@
 package code.binary_이진검색;
 
-/** 해결 : 템플릿 저장 **/
+/** 성공 : 템플릿 저장 **/
 public class C41_binarySearch {
     public static void main(String[] args) {
         int output = C41_Solution.binarySearch(new int[]{0, 1, 2, 3, 4, 5, 6}, 2);
