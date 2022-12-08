@@ -1,7 +1,7 @@
-package programmers.heap_힙;
+package programmers.heap_힙.P_더_맵게;
 import java.util.PriorityQueue;
 
-import static programmers.heap_힙.P_더_맵게_Solution.*;
+import static programmers.heap_힙.P_더_맵게.P_더_맵게_Solution.*;
 
 public class P_더_맵게 {
     public static void main(String[] args) {

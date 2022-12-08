@@ -1,8 +1,8 @@
-package programmers.sort_정렬;
+package programmers.sort_정렬.K번째수;
 
 import java.util.Arrays;
 
-import static programmers.sort_정렬.K번째수_Solution.*;
+import static programmers.sort_정렬.K번째수.K번째수_Solution.*;
 
 /** 성공, 라이브러리 사용 버전과 직접 구현 버전  **/
 public class K번째수 {
