@@ -2,7 +2,7 @@ package programmers.brute_force_완전탐색;
 
 import java.util.*;
 
-/** 성공, 재규적 풀이 **/
+/** 성공, 재규적 풀이, 마감 - 2022-12-12 **/
 public class P_소수찾기 {
 
     public static void main(String[] args) {
