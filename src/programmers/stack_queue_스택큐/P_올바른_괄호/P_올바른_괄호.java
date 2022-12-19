@@ -2,7 +2,7 @@ package programmers.stack_queue_스택큐.P_올바른_괄호;
 
 import java.util.*;
 
-/** 성공, 큐 사용 **/
+/** 성공, 큐 사용, 2022-12-18 - 1주차 **/
 public class P_올바른_괄호 {
 
     public static void main(String[] args) {
