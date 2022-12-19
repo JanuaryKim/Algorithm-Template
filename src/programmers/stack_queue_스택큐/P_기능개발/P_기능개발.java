@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/** 성공, 자료구조가 쓰여지진 않음 (자료구조 사용한 레퍼런스 코드가 오히려 비효율적) **/
+/** 성공, 자료구조가 쓰여지진 않음 (자료구조 사용한 레퍼런스 코드가 오히려 비효율적), 2022-12-18 - 1주차 **/
 public class P_기능개발 {
     public static void main(String[] args) {
         Solution solution = new Solution();
