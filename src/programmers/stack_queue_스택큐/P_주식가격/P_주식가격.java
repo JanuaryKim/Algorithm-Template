@@ -2,7 +2,7 @@ package programmers.stack_queue_스택큐.P_주식가격;
 
 import java.util.Arrays;
 
-/** 성공, 자료구조가 쓰여지진 않음 (자료구조 사용한 레퍼런스 코드가 오히려 비효율적) **/
+/** 성공, 자료구조가 쓰여지진 않음 (자료구조 사용한 레퍼런스 코드가 오히려 비효율적), 2022-12-18 - 1주차 **/
 public class P_주식가격 {
     public static void main(String[] args) {
         Solution solution = new Solution();
