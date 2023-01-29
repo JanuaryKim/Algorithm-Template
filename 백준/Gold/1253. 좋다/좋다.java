@@ -17,12 +17,12 @@ public class Main {
         }
         Arrays.sort(arr);
         int goodCtn = 0;
-        
+
         for(int i = 0; i<arr.length; i++) {
             int findNumber = arr[i];
-            
-            int start = 0; 
-            int end = arr.length - 1; 
+
+            int start = 0;
+            int end = arr.length - 1;
             int sum = 0;
 
 
@@ -39,9 +39,9 @@ public class Main {
                     }
                 }
 
-                if(arr[start] + arr[end] > findNumber) 
+                if(arr[start] + arr[end] > findNumber)
                     end--;
-                else if(arr[start] + arr[end] < findNumber) 
+                else if(arr[start] + arr[end] < findNumber)
                     start++;
             }
         }
