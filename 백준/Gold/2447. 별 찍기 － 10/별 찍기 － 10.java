@@ -1,36 +1,44 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
-    static String[][] arr = null;
+    static char[][] arr;
 
-    public static void main(String[] args) throws NumberFormatException, IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    public static void main(String[] args) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 
-        int size = Integer.parseInt(br.readLine());
-        arr = new String[size][size];
+        int n = Integer.parseInt(bf.readLine());
 
-        star(0, 0, size);
+        arr = new char[n][n];
 
-        for(int i=0;i<size;i++){
-            for(int j=0;j<size;j++){
-                bw.write(arr[i][j] != null ? arr[i][j] : " ");
+        makeStar(0,0, n);
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if(arr[i][j] == '*')
+                    sb.append("*");
+                else
+                    sb.append(" ");
             }
-            bw.write("\n");
+            sb.append("\n");
         }
-        bw.flush();
+        System.out.println(sb);
     }
 
-    public static void star(int x, int y, int size) {
+    private static void makeStar(int row, int col, int size) {
+
         if(size == 1){
-            arr[x][y] = "*";
+            arr[row][col] = '*';
             return;
         }
 
         for(int i=0; i<3; i++){
-            for(int j=0; j<3; j++){        
-                if(!(i==1 && j==1))
-                    star(x + i*size/3, y + j*size/3, size/3);
+            for(int j=0; j<3; j++){
+
+                if(!(i==1 && j==1))          
+                    makeStar(row + i*size/3, col + j*size/3, size/3);
             }
         }
     }
