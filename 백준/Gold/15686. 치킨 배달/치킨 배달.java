@@ -57,9 +57,9 @@ public class Main {
         }
 
         for (int i = index; i < chickenStorePst.size(); i++) {
-            List<Integer[]> copyList = new ArrayList<>(combination);
-            copyList.add(chickenStorePst.get(i));
-            getCombi(depth+1,i+1,copyList);
+            combination.add(chickenStorePst.get(i));
+            getCombi(depth+1,i+1,combination);
+            combination.remove(combination.size()-1);
         }
     }
 }
