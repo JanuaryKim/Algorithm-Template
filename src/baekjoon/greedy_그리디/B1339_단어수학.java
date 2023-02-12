@@ -1,55 +1,61 @@
 package baekjoon.greedy_그리디;
+
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Comparator;
 
-class Weight {
-    char c;
-    int w;
-    public Weight(char c, int w) {
-        this.c = c;
-        this.w = w;
-    }
-}
-public class B1339_단어수학 {
-    public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+/** 성공 **/
+class B1399_단어수학{
+    public static void main(String[] args) throws IOException {
 
+        //코어 로직
+        //단어에서 각 문자가 위치하는 자릿수 값을 누적하여
+        //누적값이 가장 큰 문자순으로 9~0까지의 정수를 곱하여 준다.
 
-        int n = Integer.parseInt(br.readLine());
-        String[] arr = new String[n];
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 
-        Weight[] weight = new Weight['Z'-'A'+1];
-        for (int i = 0; i < weight.length; i++) {
-            weight[i] = new Weight((char)('A'+i), 0);
-        }
-        for (int i = 0; i < n; i++) {
-            String cur = br.readLine();
-            arr[i] = cur;
-            for (int j = 0; j < cur.length(); j++) {
-                weight[cur.charAt(j)-'A'].w += Math.pow(10, cur.length()-j-1);
-            }
-        }
+        int t = Integer.parseInt(bf.readLine());
 
-        Arrays.sort(weight, new Comparator<Weight>() {
-            @Override
-            public int compare(Weight o1, Weight o2) {
-                return o2.w - o1.w;
-            }
-        });
+        //누적값을 저장하기 위한 알파벳 수만큼 배열을 미리 만들어둠
+        int[] alphabet = new int[26];
 
-        int[] atoi = new int['Z'-'A'+1];
-        int num = 9;
-        for (Weight cur : weight)
-            atoi[cur.c-'A'] = num--;
+        for (int i = 0; i < t; i++) {
 
-        int answer = 0;
-        for (String str : arr) {
+            //단어를 입력받음
+            String str = bf.readLine();
+
+            //제곱은 실제 길이 -1부터 시작
+            //십진수의 자릿수 값은 398 일 경우(길이가 3)
+            //3 : 10의 2승,
+            //9 : 10의 1승,
+            //8 : 10의 0승 이기 때문에
+            int pow = str.length()-1;
+
             for (int j = 0; j < str.length(); j++) {
-                answer += atoi[str.charAt(j)-'A']*Math.pow(10, str.length()-j-1);
+
+                char ch = str.charAt(j);
+
+                //만약 ch가 A일 경우
+                //A의 정수값은 65 이므로
+                //alphabet[0] += 자릿수값이 됨
+                //즉 각 문자의 순번에 해당하는 배열에 자릿수값을 누적함
+                alphabet[ch - 'A'] += (int)Math.pow(10, pow--);
             }
         }
-        System.out.println(answer);
+
+        Arrays.sort(alphabet);
+
+        int value = 9;
+        int sum = 0;
+        for (int i = alphabet.length-1; i >= 0; i--) { //자릿수 누적값이 가장 높은 값에서부터 가장 낮은 값까지 9부터 순차적으로 곱해줌
+            if(alphabet[i] == 0)
+                break;
+
+            sum += alphabet[i] * value--;
+        }
+
+        System.out.println(sum);
+
     }
 }
