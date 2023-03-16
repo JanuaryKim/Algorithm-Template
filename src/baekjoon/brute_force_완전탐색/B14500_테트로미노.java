@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
+/** 성공 **/
 public class B14500_테트로미노 {
 
     static int[][] map;
