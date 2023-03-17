@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 
 /** 성공 **/
-class B1399_단어수학{
+class B1339_단어수학{
     public static void main(String[] args) throws IOException {
 
         //코어 로직
