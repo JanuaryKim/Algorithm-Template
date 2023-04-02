@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 
 /** 자율 **/
-public class B2217_로프2 {
+public class B2217_로프 {
     public static void main(String[] args) throws IOException {
 
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
