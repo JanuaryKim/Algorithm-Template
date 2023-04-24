@@ -11,10 +11,10 @@ public class Main {
 
         String A = inputs[0];
         String B = inputs[1];
-
-
-       int minDiff = Integer.MAX_VALUE;
-        for(int i=0;i<B.length()-A.length()+1;i++){
+        
+        int minDiff = Integer.MAX_VALUE;
+        int limit = B.length() - A.length();
+        for(int i=0;i <= limit;i++){
             int tempDiff=0;
 
             for(int j=0;j<A.length();j++){
@@ -26,9 +26,6 @@ public class Main {
                 minDiff = tempDiff;
             }
         }
-
         System.out.println(minDiff);
-
-
     }
 }
