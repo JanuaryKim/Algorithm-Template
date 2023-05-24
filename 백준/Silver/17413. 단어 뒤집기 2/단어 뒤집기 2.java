@@ -1,55 +1,58 @@
-import java.util.*;
-import java.io.*;
-	
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Main {
-	public static void main(String[] args) throws Exception {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringBuilder sb = new StringBuilder();
-		Stack<Character> stack = new Stack<>();
-	
-		String str = br.readLine();
-		int len = str.length();
-	
-		boolean tag = false;		
-		for(int i=0; i<len; i++) {
-	
-			if(str.charAt(i) == '<') {
-				tag = true;
-	
-				while( !stack.isEmpty() ) {
-					sb.append(stack.pop());
-				}
-	
-				sb.append(str.charAt(i));
-			}
-			else if(str.charAt(i) == '>') {
-				tag = false;
-				sb.append(str.charAt(i));
-			}
+    public static void main(String[] args) throws IOException {
 
-			else if(tag == true) {
-				sb.append(str.charAt(i));
-			}
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 
-			else if( tag == false) {
-				if(str.charAt(i) == ' ') {
-	
-					while( !stack.isEmpty() ) {
-						sb.append(stack.pop());
-					}
-	
-					sb.append(str.charAt(i));
-				}
+        String line = bf.readLine();
 
-				else {
-					stack.push(str.charAt(i));
-				}
-			}
-		}	
-	
-		while( !stack.isEmpty() ) {
-			sb.append(stack.pop());
-		}		
-		System.out.println(sb);		
-	} 
-} 
+        StringBuilder sb = new StringBuilder();
+        StringBuilder notVoca = new StringBuilder();
+        StringBuilder voca = new StringBuilder();
+
+        boolean flag = false;
+        for (int i = 0; i < line.length(); i++) {
+            char curChar = line.charAt(i);
+            if(curChar == '<')
+                flag = true;
+
+            if (flag) {
+
+                notVoca.append(curChar);
+
+                if (voca.length() != 0) {
+                    sb.append(voca.reverse());
+                    voca = new StringBuilder();
+                }
+                if (curChar == '>') {
+                    flag = false;
+                    sb.append(notVoca);
+                    notVoca = new StringBuilder();
+                }
+            }
+            else{
+                if (curChar == ' ') {
+                    if (voca.length() != 0) {
+                        sb.append(voca.reverse());
+                        voca = new StringBuilder();
+                    }
+                    sb.append(curChar);
+                    continue;
+                }
+
+                voca.append(curChar);
+            }
+        }
+
+        if (notVoca.length() != 0) {
+            sb.append(notVoca);
+        } else if (voca.length() != 0) {
+            sb.append(voca.reverse());
+        }
+
+        System.out.println(sb);
+    }
+}
