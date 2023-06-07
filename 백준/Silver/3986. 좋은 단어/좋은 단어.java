@@ -1,32 +1,52 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 
 public class Main {
+    public static void main(String[] args) throws IOException {
 
-	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
-		int N = scan.nextInt();
-		Stack<Character> stack = new Stack<Character>();
-		int goodWords = 0;
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 
-		for(int i=0; i<N; i++) {
-			String str = scan.next();
-			for(int j=0; j<str.length(); j++) {
-				if(!stack.isEmpty() && str.charAt(j) == stack.peek()) 
-					stack.pop();	
-				else 
-					stack.push(str.charAt(j));	
-			}
-			
-			if(stack.size() == 0)
-				goodWords ++;
+        int n = Integer.parseInt(bf.readLine());
 
-			stack.clear();	
-		}
 
-		System.out.println(goodWords);
-		scan.close();
-	}
+        List<String> list = new LinkedList<>();
 
+        for (int i = 0; i < n; i++) {
+            list.add(bf.readLine());
+        }
+
+
+        int ctn = 0;
+        for (int i = 0; i < n; i++) {
+
+            String str = list.get(i);
+            Stack<Character> queue = new Stack<>();
+            int idx = 0;
+
+
+            while (idx < str.length()) {
+                char currentChar = str.charAt(idx);
+
+
+                if (!queue.isEmpty() && queue.peek() == currentChar) {
+                    queue.pop();
+                } else {
+                    queue.add(currentChar);
+                }
+
+                idx++;
+            }
+
+            if(!queue.isEmpty())
+                continue;
+
+            ctn++;
+        }
+
+        System.out.println(ctn);
+    }
 }
-
