@@ -1,25 +1,27 @@
 import java.util.*;
+
 class Solution {
- public boolean solution(String[] phone_book) {
-
-        HashMap<String, String> hashMap = new LinkedHashMap<>();
-
-        for (int i = 0; i < phone_book.length; i++) {
-            hashMap.put(phone_book[i], phone_book[i]);
+    public boolean solution(String[] phoneBook) {
+        Map<String, String> map = new HashMap<>();
+        for(String pn : phoneBook)
+        {
+            map.put(pn, "prefix");
         }
-
-        for (String key : hashMap.keySet()) {
-            String phone = hashMap.get(key);
-
-            for (int j = 0; j < phone.length(); j++) {
-
-                if (hashMap.get(phone.substring(0, j)) != null) {
+        
+        for(int i = 0; i < phoneBook.length; i++)
+        {
+            String curNum = phoneBook[i];
+            
+            for(int j = 1; j < curNum.length(); j++)
+            {
+                String splStr = curNum.substring(0, j);
+                
+                if(map.get(splStr) != null) {
                     return false;
                 }
             }
         }
-
+        
         return true;
-
     }
 }
