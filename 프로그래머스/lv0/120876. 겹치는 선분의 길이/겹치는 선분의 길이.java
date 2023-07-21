@@ -2,24 +2,25 @@ import java.util.*;
 
 class Solution {
     public int solution(int[][] lines) {
-        int answer = 0;
-
-        int[] count = new int[201];
-
-        for(int[] i : lines) {
-            int start = i[0]+100;
-            int end = i[1]+100;
-
-            for(int k=start; k<end; k++) {
-                count[k] += 1;
+        
+        int[] arr = new int[200];
+        int result = 0;
+        for(int[] a : lines)
+        {
+            int start = a[0] + 100;
+            int end = a[1] + 100;
+            
+            for(int i = start; i < end; i++)
+            {
+                arr[i]++;
             }
         }
         
-        for(int i : count) {
-            if(i>1) answer++;
-        }
-
-        return answer;
+        for(int i = 0; i < arr.length; i++)
+            if(arr[i] > 1)
+                result++;
+        
+        return result;
     }
 }
 
