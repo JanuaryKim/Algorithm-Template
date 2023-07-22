@@ -1,17 +1,12 @@
+import java.util.*;
+
 class Solution {
     public String solution(String my_string, int num1, int num2) {
         
-        StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < my_string.length(); i++)
-        {
-            int idx = i;
-            if(i == num1)
-                idx = num2;
-            else if(i == num2)
-                idx = num1;
-            
-            sb.append(my_string.charAt(idx));
-        }
-        return sb.toString();
+        char[] chars = my_string.toCharArray();
+        char temp = chars[num1];
+        chars[num1] = chars[num2];
+        chars[num2] = temp;
+        return String.valueOf(chars);
     }
 }
