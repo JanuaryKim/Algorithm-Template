@@ -18,11 +18,8 @@ class Solution {
                 strArr[idx++] = str;
             }
         }
-        
-        
-        
+              
         StringBuilder sb = new StringBuilder();
-        
         
         for(int i = 0; i < s.length(); i++)
         {
