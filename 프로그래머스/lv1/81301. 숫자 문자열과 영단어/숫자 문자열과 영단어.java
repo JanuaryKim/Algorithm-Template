@@ -8,10 +8,8 @@ class Solution {
         
         for(int i = 0; i < digitStr.length; i++)
         {
-            // System.out.println(digitStr[i]);
             s = s.replaceAll(digitStr[i], String.valueOf(i));
         }
-        
         
         return Integer.parseInt(s);
     }
