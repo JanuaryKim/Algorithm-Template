@@ -2,45 +2,49 @@ import java.util.*;
 
 class Solution {
     public String solution(String[] survey, int[] choices) {
-       String answer = "";
-        
-        int score_R = 0, score_T = 0, score_C = 0, score_F = 0
-          , score_J = 0, score_M = 0, score_A = 0, score_N = 0;
-            
-        for (int i=0; i<survey.length; i++) {
-            
-            String sur = survey[i];
-            
-            String type = sur.substring(0,1);
-            if(choices[i] > 4) type = sur.substring(1,2);
-            
-            int score = Math.abs(choices[i] - 4);
+        StringBuilder sb = new StringBuilder();
+        Map<String, Integer> map = new HashMap<>();
 
-            switch(type) {
-                case "R" : score_R += score; break;
-                case "T" : score_T += score; break;
-                    
-                case "C" : score_C += score; break;
-                case "F" : score_F += score; break;
-                
-                case "J" : score_J += score; break;
-                case "M" : score_M += score; break;
-                   
-                case "A" : score_A += score; break;
-                case "N" : score_N += score; break;
-            }   
+        for(int i = 0; i < survey.length; i++)
+        {
+            String[] splStr = survey[i].split("");
+            int score = choices[i];
+            int realScore = 0;
+            
+            if(score == 4)
+                continue;
+            if(score > 4){
+                realScore = score - 4;
+                map.put(splStr[1], map.getOrDefault(splStr[1], 0) + realScore);
+            }
+            else{
+                realScore = 4 - score;
+                map.put(splStr[0], map.getOrDefault(splStr[0], 0) + realScore);
+            }
         }
         
-        String userTp1 = "R";
-        String userTp2 = "C";
-        String userTp3 = "J";
-        String userTp4 = "A";
+        if(map.getOrDefault("R", 0) < map.getOrDefault("T", 0))
+            sb.append("T");
+        else
+            sb.append("R");
         
-        if(score_R < score_T) userTp1 = "T";
-        if(score_C < score_F) userTp2 = "F";
-        if(score_J < score_M) userTp3 = "M";
-        if(score_A < score_N) userTp4 = "N";
+        if(map.getOrDefault("C", 0) < map.getOrDefault("F", 0))
+            sb.append("F");
+        else
+            sb.append("C");
         
-        return userTp1+userTp2+userTp3+userTp4;
+        if(map.getOrDefault("J", 0) < map.getOrDefault("M", 0))
+            sb.append("M");
+        else
+            sb.append("J");
+        
+        if(map.getOrDefault("A", 0) < map.getOrDefault("N", 0))
+            sb.append("N");
+        else
+            sb.append("A");
+        
+        return sb.toString();
+    
+
     }
 }
