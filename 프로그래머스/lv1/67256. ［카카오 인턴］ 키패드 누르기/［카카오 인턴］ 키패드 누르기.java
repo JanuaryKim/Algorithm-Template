@@ -51,17 +51,15 @@ class Solution {
                 {
                     String f = hand.equals("right") ? "R" : "L";
                     
-                    if(f.equals("R")) {
+                    if(f.equals("R"))
                         crp = map.get(cn);
-                    }
-                    else { 
+                    else
                         clp = map.get(cn);
-                    }
+                    
                     sb.append(f);
                 }
             }
         }
-        
         return sb.toString();
     }
 }
