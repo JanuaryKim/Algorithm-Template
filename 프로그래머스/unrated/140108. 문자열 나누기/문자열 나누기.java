@@ -17,13 +17,9 @@ class Solution {
             }
             
             if(firstC == curC)
-            {
                 xCtn++;
-            }
             else
-            {
                 otherCtn++;
-            }
             
             if(xCtn == otherCtn)
             {
