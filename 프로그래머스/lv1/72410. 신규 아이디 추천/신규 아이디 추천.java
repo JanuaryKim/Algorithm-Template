@@ -33,11 +33,11 @@ class Solution {
         
         if(new_id.length() <= 2)
         {
-            String lastStr = String.valueOf(new_id.charAt(new_id.length()-1));
+            char lastC = new_id.charAt(new_id.length()-1);
             
             while(new_id.length() < 3)
             {
-                new_id = new_id + lastStr;
+                new_id = new_id + lastC;
             }
         }
         
