@@ -8,8 +8,7 @@ class Solution
             b = (b + 1) / 2;
             
             if(a == b)
-                break;
-            
+                break;     
             round++;
         }
         return round;
