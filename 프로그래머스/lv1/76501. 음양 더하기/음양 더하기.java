@@ -4,13 +4,8 @@ class Solution {
         int sum = 0;
         for(int i = 0; i < absolutes.length; i++)
         {
-            String str = String.valueOf(absolutes[i]);
-            if(signs[i] == false)
-                str = "-" + str;
-            
-            sum += Integer.parseInt(str);
+            sum += absolutes[i] * (signs[i] ? 1 : -1);
         }
-        
         return sum;
     }
 }
