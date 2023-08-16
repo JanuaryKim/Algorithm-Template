@@ -3,11 +3,12 @@ import java.util.*;
 class Solution {
     public int solution(String str1, String str2) {
         
-        List<String> list[] = new List[2];
+        List<String> list[] = new List[2]; 
         
         list[0] = new ArrayList<>();
         list[1] = new ArrayList<>();
         
+        //문자열의 분리 작업. 두개씩 분리
         StringBuilder sb = new StringBuilder();
         for(int i = 1; i < str1.length(); i++)
         {
@@ -25,6 +26,7 @@ class Solution {
             sb = new StringBuilder();
         }
 
+        //분리된 문자쌍 중 영문자가 아닌 쌍들 제거 작업. (대소문자 모두 소문자로 통일)
         for(int i = 0; i < list.length; i++)
         {
             List<String> l = list[i];
@@ -45,8 +47,7 @@ class Solution {
                         break;
                     }
                 }
-                
-                
+                           
                 if(!b){
                     l.remove(j);
                 }
@@ -56,8 +57,8 @@ class Solution {
             }
         }
         
+        //문자쌍을 map에 저장하여 갯수 파악 
         Map<String, Integer>[] m = new Map[2];
-       
         for(int i = 0; i < 2; i++)
         {
             m[i] = new HashMap<>();
@@ -74,11 +75,13 @@ class Solution {
         int smallMapIdx = m[0].size() > m[1].size() ? 1 : 0;
         int bigMapIdx = 2 - smallMapIdx - 1;
         
+        //교집합 갯수 구하기
         for(String key : m[smallMapIdx].keySet())
         {
             gyoCtn += Math.min(m[smallMapIdx].get(key), m[bigMapIdx].getOrDefault(key,0));
         }
         
+        //합집합 갯수 구하기
         for(int i = 0; i < 2; i++)
         {
             for(String key : m[i].keySet())
@@ -89,7 +92,7 @@ class Solution {
             }
         }
         
-        if(gyoCtn == 0 && hapCtn == 0)
+        if(gyoCtn == 0 && hapCtn == 0) //합,교집합 모두 0일 경우에만
             return 65536;
         else
             return (int)(((double)gyoCtn / hapCtn) * 65536); 
