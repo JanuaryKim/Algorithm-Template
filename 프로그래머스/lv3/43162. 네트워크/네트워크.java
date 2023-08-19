@@ -8,15 +8,12 @@ class Solution {
          
         for(int i = 0; i < computers.length; i++)
         {
-
             if(visited[i]) continue;
-
             result++;
             q.offer(i);
             visited[i] = true;
             while(q.size() > 0)
-            {
-                
+            {              
                 int com = q.poll();
                 for(int j = 0; j < computers[i].length; j++)
                 {
