@@ -2,18 +2,20 @@ import java.util.*;
 
 class Solution {
     public int solution(int[] ingredient) {
+        
         int result = 0;
-        StringBuilder sb = new StringBuilder();
-
-        for(int i = 0; i < ingredient.length; i++)
+        int[] st = new int[ingredient.length];
+        int idx = 0;
+        for(int i : ingredient)
         {
-            sb.append(ingredient[i]);
-            if(sb.length() > 3 && sb.substring(sb.length() - 4, sb.length()).equals("1231"))
-            {
-                sb.delete(sb.length() - 4, sb.length());
+            st[idx++] = i;
+            if(idx >= 4 && 
+               st[idx - 1] == 1 && st[idx - 2] == 3 && st[idx - 3] == 2 && st[idx - 4] == 1) {
                 result++;
+                idx -= 4;
             }
         }
+        
         return result;
     }
 }
