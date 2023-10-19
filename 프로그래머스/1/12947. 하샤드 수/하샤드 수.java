@@ -2,14 +2,6 @@ import java.util.*;
 
 class Solution {
     public boolean solution(int x) {
-        boolean answer = true;
-        
-        int sum = 0;
-        String[] strArr = String.valueOf(x).split("");
-        for(int i = 0; i < strArr.length; i++){
-            sum += Integer.parseInt(strArr[i]);
-        }
-        
-        return x % sum == 0 ? true : false;
+        return x % String.valueOf(x).chars().map(c-> c - '0').sum() == 0 ? true : false;
     }
 }
