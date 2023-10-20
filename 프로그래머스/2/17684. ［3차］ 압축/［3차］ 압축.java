@@ -21,7 +21,7 @@ class Solution {
                 sub = msg.substring(start, i);
                 val = m.get(sub);
                 if(val != null){
-                    start = i - 1;
+                    start = i - 1; // KA 처럼 2글자 이상을 사전에서 발견한 경우, A 다음 글자를 start로 사용하기 위함.
                     break;
                 }
             }
