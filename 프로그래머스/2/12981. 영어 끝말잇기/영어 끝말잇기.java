@@ -13,17 +13,11 @@ class Solution {
         for(int i = 1; i < words.length; i++){
             String curVoca = words[i];
             
-            if(map.get(curVoca) != null ? true : false) { // 중복 단어인지 체크
+            if((map.get(curVoca) != null ? true : false) || (curVoca.charAt(0) != preLastC)) { // 중복 단어인지 체크 , 끝말 체크
                 result[0] = num;
                 result[1] = turn;
                 break;
             }   
-            
-            if(curVoca.charAt(0) != preLastC) { // 끝말 체크
-                result[0] = num;
-                result[1] = turn;
-                break;
-            }      
     
             if((i + 1) % n == 0 ? true : false){ // 턴 횟수 증가
                 turn++;
