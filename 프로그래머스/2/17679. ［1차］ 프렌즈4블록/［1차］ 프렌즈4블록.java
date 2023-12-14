@@ -5,17 +5,13 @@ class Solution {
     char[][] map;
     List<Integer[]> list = new ArrayList<>();
     int[][] dir = {{0,0}, {1,0}, {0,1}, {1,1}};
-    public int solution(int m, int n, String[] board) {
-        
-        map = init(m, n, board);
-                    
-     
-
+    
+    public int solution(int m, int n, String[] board) {       
+        map = init(m, n, board);              
         while(checkBlock()){
             clearBlock();    
             downBlock();
-        }
-        
+        }    
         return result;
     }
     
@@ -30,8 +26,7 @@ class Solution {
         return result;
     }
     
-    private boolean checkBlock(){     
-      
+    private boolean checkBlock(){             
         boolean result = false;
         for(int i = 0; i < map.length-1; i++){
             for(int j = 0; j < map[i].length-1; j++){
@@ -46,9 +41,7 @@ class Solution {
         return result;
     }
     
-    
-    private void clearBlock(){
-        
+    private void clearBlock(){     
         for(Integer[] pos : list){
             for(int i = 0; i < dir.length; i++){
                 int row = pos[0] + dir[i][0];
