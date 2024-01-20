@@ -28,7 +28,3 @@ class Solution
         return result * result;
     }
 }
-
-//[1], 
-//[1, 1], 
-//[1, 1, 1]
