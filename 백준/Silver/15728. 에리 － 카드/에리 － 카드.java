@@ -18,7 +18,8 @@ public class Main {
         for(int i = 0; i < n; i++) shareCards[i] = Integer.parseInt(spl[i]);
         spl = br.readLine().split(" ");
         for(int i = 0; i < n; i++) teamCards[i] = Integer.parseInt(spl[i]);
-
+        // -- 입력 소스 --
+        
         Integer[] highSum = new Integer[n];
         Arrays.fill(highSum, Integer.MIN_VALUE);
         for(int i = 0; i < teamCards.length; i++){
