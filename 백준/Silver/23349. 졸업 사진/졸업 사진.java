@@ -25,7 +25,7 @@ public class Main {
             if(timeTable.get(spot) == null) timeTable.put(spot, new int[50001]);
             int[] time = timeTable.get(spot);
             for(int j = s; j < e; j++){
-                time[j]++;
+                time[j]++; //타임라인의 밸류인 배열에, 제출된 시간에 1씩 값을 누적함
             }
         }
 
