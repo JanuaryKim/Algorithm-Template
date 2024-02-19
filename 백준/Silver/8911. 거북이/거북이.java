@@ -1,49 +1,59 @@
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
-    private static final char LEFT = 'L';
-    private static final char RIGHT = 'R';
-    private static final char FRONT = 'F';
-    private static final char BACK = 'B';
-    private static final int[] DY = {-1,0,1,0};
-    private static final int[] DX = {0,1,0,-1};
-    public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int testCnt = Integer.parseInt(br.readLine());
-        for(int t = 0 ; t < testCnt ; t++){
-            String command = br.readLine();
-            cal(command);
+    static int[] dx = {0, 1, 0, -1}; // 상 우 하 좌
+    static int[] dy = {1, 0, -1, 0}; // 상 우 하 좌
+    public static void main(String[] args) throws IOException {
+        StringBuilder result = new StringBuilder();
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(bf.readLine());
+
+        for(int i = 0; i < t; i++){
+            result.append(getResult(bf.readLine()));
+            if(i != t-1)
+                result.append("\n");
         }
-    }
-    private static final int SIZE = 500;
-    private static void cal(String command) {
-        int dir = 0;
-        int y = SIZE;
-        int x = SIZE;
-        int minY = SIZE;
-        int maxY = SIZE;
-        int minX = SIZE;
-        int maxX = SIZE;
-        for(int i = 0 ; i < command.length() ; i++){
-            char ch = command.charAt(i);
-            if(FRONT == ch){
-                y += DY[dir];
-                x += DX[dir];
-            }else if(BACK == ch){
-                y -= DY[dir];
-                x -= DX[dir];
-            }else if(LEFT == ch){
-                dir = (dir+3) % 4;
-            }else{
-                dir = (dir+1) % 4;
-            }
-            minY = Math.min(minY,y);
-            minX = Math.min(minX,x);
-            maxY = Math.max(maxY,y);
-            maxX = Math.max(maxX,x);
-        }
-        System.out.println((maxY-minY) * (maxX - minX));
+        System.out.println(result);
     }
 
+    private static int getResult(String command){
+        int dir = 0; // 0 1 2 3 상 우 하 좌
+        int x = 0, y = 0;
+        int maxX = 0, minX = 0, maxY = 0, minY = 0;
+
+        for(int j = 0; j < command.length(); j++){
+
+            char com = command.charAt(j);
+            if(com == 'L'){
+                dir -= 1;
+                if(dir < 0)
+                    dir = 3;
+            }
+            else if(com == 'R'){
+                dir += 1;
+                if(dir > 3)
+                    dir = 0;
+            }
+            else if(com == 'F'){
+                x += dx[dir];
+                y += dy[dir];
+            }
+            else if(com == 'B'){
+                x -= dx[dir];
+                y -= dy[dir];
+            }
+            if(x > maxX)
+                maxX = x;
+            if(y > maxY)
+                maxY = y;
+            if(x < minX)
+                minX = x;
+            if(y < minY)
+                minY = y;
+        }
+
+        return (Math.abs(minX) + maxX) * (Math.abs(minY) + maxY);
+    }
 }
