@@ -7,11 +7,15 @@ public class Main {
         int result = 0;
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(bf.readLine());
-        String[] input = bf.readLine().split(" ");
+        String input = bf.readLine();
         boolean[] desLight = new boolean[n];
-        for(int i = 0; i < input.length; i++){
-            if(input[i].equals("1")){
-                desLight[i] = true;
+        int idx = 0;
+        for(int i = 0; i < input.length(); i++){
+            if(input.charAt(i) == '0'){
+                idx++;
+            }
+            else if(input.charAt(i) == '1'){
+                desLight[idx++] = true;
             }
         }
 
