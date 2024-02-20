@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+//최초 모두 꺼진 라이트 배열을, 요소 하나씩 검사하여 목표 배열의 라이트 상태와 다르다면 해당 라이트 누름.
 public class Main {
     public static void main(String[] args) throws IOException {
         int result = 0;
@@ -18,7 +19,6 @@ public class Main {
                 desLight[idx++] = true;
             }
         }
-
         boolean[] light = new boolean[n];
         for(int i = 0; i < n; i++){
             if(light[i] != desLight[i]){
