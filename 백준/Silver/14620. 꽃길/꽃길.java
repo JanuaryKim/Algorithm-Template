@@ -2,11 +2,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+//14620
 public class Main {
     static int[][] map;
     static int minCost = Integer.MAX_VALUE;
     static boolean[][] visited;
-    static Point[] seedCenter = new Point[3];
     static int n;
     static int[] cy = {-1, 1, 0, 0}; //상, 하, 좌, 우
     static int[] cx = {0,0, -1, 1}; //상, 하, 좌, 우
@@ -24,14 +24,11 @@ public class Main {
         }
 
         dfs(0,  0);
-
         System.out.println(minCost);
-
     }
 
     private static void dfs(int seedIdx, int curCost) {
-
-
+        
         if(seedIdx >= 3){
             if(curCost < minCost){
                 minCost = curCost;
@@ -55,14 +52,12 @@ public class Main {
         }
     }
 
-    private static boolean checkPossiblePlant(int y, int x) {
+    private static boolean checkPossiblePlant(int y, int x) { //심을 수 있는 곳인가 체크
 
-//        System.out.println("체킹 : "  + y + " , " + x);
         boolean result = true;
 
         if(y >= n || x >= n || y < 0 || x < 0|| visited[y][x])
         {
-
             return false;
         }
 
@@ -74,13 +69,11 @@ public class Main {
                 return false;
             }
         }
-
         return result;
     }
 
-    private static int plant(boolean plant, int seedIdx, int y, int x) {
+    private static int plant(boolean plant, int seedIdx, int y, int x) { //심거나 뽑음, plant = true일때 심고, 뽑을때는 false
 
-//        System.out.println(seedIdx + " 번째 "+ y + " , " + x);
         int cost = 0;
 
         visited[y][x] = plant;
@@ -92,16 +85,7 @@ public class Main {
             visited[aroundY][aroundX] = plant;
             cost += map[aroundY][aroundX];
         }
-        seedCenter[seedIdx] = new Point(y,x);
         return cost;
     }
 
-
-    private static class Point{
-        int y, x;
-        public Point(int y, int x) {
-            this.y = y;
-            this.x = x;
-        }
-    }
 }
