@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+//개선 버전
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
@@ -15,21 +16,11 @@ public class Main {
 
             char[] chars = new char[setStr.length()];
 
-            int firstIdx = 0;
             int idx = 0;
-            int insertIdx = 0;
-            while(idx < setStr.length()){
-                chars[insertIdx] = setStr.charAt(idx);
-
-                idx++;
-                insertIdx += n;
-                while(insertIdx < setStr.length() && idx < setStr.length()){
-
-                    chars[insertIdx] = setStr.charAt(idx);
-                    idx++;
-                    insertIdx += n;
+            for(int i = 0; i < n; i++){ 
+                for(int j = i; j < setStr.length(); j+=n){
+                    chars[j] = setStr.charAt(idx++);
                 }
-                insertIdx = ++firstIdx;
             }
             sb.append(new String(chars));
         }
