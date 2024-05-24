@@ -1,30 +1,26 @@
-import java.util.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class Main {
+    public static void main(String[] args) throws IOException {
+        Long result = 0L;
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(bf.readLine());
+        Integer[] tips = new Integer[n];
+        for(int i = 0; i < n; i++){
+            tips[i] = Integer.parseInt(bf.readLine());
+        }
 
-	public static void main(String[] args) throws IOException{
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		
-		int N = Integer.parseInt(br.readLine());
-		Integer[] arr = new Integer[N];
-		for(int i=0;i<N;i++) {
-			arr[i] = Integer.parseInt(br.readLine());
-		}
-		
-		Arrays.sort(arr, Comparator.reverseOrder());
-		
-		long result = 0;
-		for(int i=0;i<N;i++) {
-			int temp = arr[i]-i;
-			if(temp<0) break;
-			result += temp;
-		}
-		
-		bw.write(result+"");
-		bw.flush();
-		bw.close();
-			
-	}
+        Arrays.sort(tips, (t1,t2) -> t2 - t1);
+
+        for(int i = 0; i < n; i++){
+            int realTip = tips[i] - ((i + 1) - 1);
+            if(realTip <= 0) break;
+            result+=realTip;
+        }
+
+        System.out.println(result);
+    }
 }
