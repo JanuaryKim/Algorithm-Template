@@ -15,8 +15,7 @@ public class Main {
             if(maxDrink < drinks[i]) maxDrink = drinks[i];
             result += drinks[i];
         }
-
-        System.out.println((result+maxDrink) /2);
+        System.out.println((result+maxDrink) /2); //분배법칙 이용 원리
     }
 }
     
