@@ -1,19 +1,23 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        StringBuffer S = new StringBuffer(bf.readLine());
+        String S = bf.readLine();
 
         String[] arr = new String[S.length()];
 
         int idx = 0;
-        while(S.length() > 0){
-            arr[idx++] = S.toString();
-            S.deleteCharAt(0);
+        String tempS = S;
+        while(tempS.length() > 0){
+            arr[idx++] = tempS;
+            tempS = S.substring(idx);
         }
 
         Arrays.sort(arr);
