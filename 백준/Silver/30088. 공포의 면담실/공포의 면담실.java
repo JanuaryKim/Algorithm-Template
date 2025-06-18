@@ -2,34 +2,45 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        int result = 0;
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 
-        int n = Integer.parseInt(bf.readLine());
-        int[] timeSum = new int[n];
-        int[][] timeList = new int[n][];
+    static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static final StringBuilder sb = new StringBuilder();
+    static StringTokenizer st;
 
-        for(int i = 0; i < n; i++){
-            int[] team = Arrays.stream(bf.readLine().split(" ")).mapToInt(j -> Integer.parseInt(j)).toArray();
-            int employCnt = team[0];
+    int N;
+    int M;
+    int[] sum;
+    long res;
 
-            timeList[i] = Arrays.copyOfRange(team,1, employCnt+1);
+    private void solution() throws IOException {
 
-            for(int j = 1; j <= employCnt; j++){
-                timeSum[i] += team[j];
+        N = Integer.parseInt(br.readLine());
+        sum = new int[N];
+        for (int i = 0; i < N; i++) {
+            st = new StringTokenizer(br.readLine());
+            M = Integer.parseInt(st.nextToken());
+            for (int j = 0; j < M; j++) {
+                sum[i] += Integer.parseInt(st.nextToken());
             }
-
         }
 
-//        System.out.println(Arrays.toString(timeSum));
-        Arrays.sort(timeSum);
-        for(int i = 0; i < n; i++){
-            result += result + timeSum[i];
+        Arrays.sort(sum);
+        long prefixSum = 0;
+        res = 0;
+        for (int i = 0; i < N; i++) {
+            prefixSum += sum[i];
+            res += prefixSum;
         }
 
-        System.out.println(result);
+        System.out.println(res);
+    }
+
+    public static void main(String[] args) throws IOException {
+
+        Main main = new Main();
+        main.solution();
     }
 }
