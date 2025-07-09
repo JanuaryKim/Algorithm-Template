@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
+//아이디어 참조 : https://zoosso.tistory.com/438
+
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -71,7 +73,7 @@ public class Main {
                 }
 
                 curRow = tempRow + 1;
-
+                
                 map[curRow][curCol - 1] = '*';
 
                 if(n == 2)
@@ -97,10 +99,10 @@ public class Main {
             map[curRow][curCol - 2] = '*';
             map[curRow + 1][curCol - 2] = '*';
             map[curRow + 2][curCol - 2] = '*';
-            
+
             for(int i = 0; i < row; i++){
                 if(i == 1) {
-                    System.out.println('*');
+                    System.out.println('*'); // * 하나인 경우 해당 줄은 이후 컬럼에 빈칸 조차 출력하지 않음
                     continue;
                 }
                 for(int j = 0; j < col; j++){
