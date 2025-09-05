@@ -13,7 +13,7 @@ public class Main {
         int hurtleIdx = 0;
         int action = 0;
 
-        while(curPos < hurtle[n-1]) {
+        while(curPos <= hurtle[n-1]) {
 
             if(curPos == hurtle[hurtleIdx]) {
                 action = -1;
@@ -33,7 +33,7 @@ public class Main {
             action++;
         }
 
-        System.out.println(action);
+        System.out.println(action == 0 ? -1 : action);
 
     }
 }
