@@ -1,10 +1,4 @@
-def solution():
-    n = int(input())
-    resultList = []
-    for i in range(1, n + 1):
-        line = input()
-        newLine = str(i) + ". " + line
-        resultList.append(newLine)
-
-    print("\n".join(resultList))
-solution()
+def solution2():  
+    for i in range(int(input())):
+        print(f"{i+1}. {input()}")
+solution2()
